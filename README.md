@@ -31,7 +31,7 @@ The TSR (`HPRN.COM`) hooks INT 17h (BIOS printer services) and translates standa
     (DB-25 Female)                           (24-pin Centronics)
     ===============                          ===================
 
-    DATA LINES (directly active-low accent inverted in software):
+    DATA LINES (inverted in software via XOR $FF):
     Pin 2  (D0) ─────────────────────────── Pin 1  (DIO1)
     Pin 3  (D1) ─────────────────────────── Pin 2  (DIO2)
     Pin 4  (D2) ─────────────────────────── Pin 3  (DIO3)
@@ -60,7 +60,13 @@ The TSR (`HPRN.COM`) hooks INT 17h (BIOS printer services) and translates standa
 ### Signal Logic Notes
 
 - **Data lines are inverted** in software (`XOR $FF`) to match HPIB active-low convention
-- **ATN (Init pin)** is hardware-inverted on the parallel port control register
+- **Control port bit mapping:**
+  - Bit 0 (Strobe/Pin 1) = DAV - hardware inverted
+  - Bit 1 (Auto LF/Pin 14) = NRFD - hardware inverted, used as INPUT
+  - Bit 2 (Init/Pin 16) = ATN - NOT inverted
+  - Bit 3 (Select In/Pin 17) = NDAC - hardware inverted, used as INPUT
+- **Status port:** Bit 3 (Error/Pin 15) = SRQ input
+- **Bidirectional requirement:** NRFD and NDAC are read FROM the control port, requiring a parallel port that supports reading external signals on control pins (PS/2-style or bidirectional ports)
 - The auto-detect jumper shorts pins 11↔16 on the parallel port side only
 
 ### ASCII Diagram
