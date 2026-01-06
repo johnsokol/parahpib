@@ -1,0 +1,16 @@
+# Compiled binaries
+*.COM
+*.EXE
+*.OBJ
+*.MAP
+*.TPU
+*.DCU
+
+# Turbo Pascal
+*.BAK
+*.PCK
+*.SW?
+
+# Editor files
+*~
+*.swp
