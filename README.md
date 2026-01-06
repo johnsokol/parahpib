@@ -31,7 +31,7 @@ The TSR (`HPRN.COM`) hooks INT 17h (BIOS printer services) and translates standa
     (DB-25 Female)                           (24-pin Centronics)
     ===============                          ===================
 
-    DATA LINES (directly active-low accent accent accent active accent accent inverted accent):
+    DATA LINES (directly active-low accent inverted in software):
     Pin 2  (D0) ─────────────────────────── Pin 1  (DIO1)
     Pin 3  (D1) ─────────────────────────── Pin 2  (DIO2)
     Pin 4  (D2) ─────────────────────────── Pin 3  (DIO3)
@@ -53,7 +53,7 @@ The TSR (`HPRN.COM`) hooks INT 17h (BIOS printer services) and translates standa
     AUTO-DETECT JUMPER (optional - enables auto port detection):
     Pin 11 (Busy)      ──────────────────── Pin 16 (Init) [directly looped on parallel side]
 
-    ACCENT ACCENT GROUND:
+    GROUND:
     Pin 18-25 (Ground) ──────────────────── Pin 12,17-24 (Ground/Shield)
 ```
 
